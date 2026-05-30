@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Официальная Дизайн-Система — Qingdao Camp</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700&family=Manrope:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        :root {
+            /* === Color Palette (Soft Editorial) === */
+            --color-primary: #47803c;          /* Green — accent only */
+            --color-primary-hover: #386630;
+            --color-primary-soft: rgba(71, 128, 60, 0.06);
+            --color-secondary: #E8EFE9;        /* Pale matcha background tint */
+            --color-secondary-hover: #D6E3D8;
+            --color-accent: #D4AF37;           /* Warm gold — editorial accent */
+            --color-accent-soft: rgba(212, 175, 55, 0.12);
+            --color-accent-light: #FBF7EB;
+            --color-ink: #1A1C1B;              /* Neutral near-black for main text */
+            --color-dark-bg: #18191A;          /* Clean deep neutral background */
+            --color-light: #F4F2EC;            /* Warm off-white "Chinese paper" */
+            --color-white: #FFFFFF;
+            --color-gray-soft: #8C8E8C;
+            --color-border: #E0E2DD;           /* Neutral border */
+            --color-border-soft: rgba(26, 28, 27, 0.07);
+
+            /* === Typography === */
+            --font-heading: 'Plus Jakarta Sans', 'Manrope', -apple-system, sans-serif;
+            --font-body: 'Manrope', -apple-system, sans-serif;
+            --font-accent: 'Fraunces', 'Plus Jakarta Sans', Georgia, serif;
+
+            /* === Layout & Radius === */
+            --radius-pill: 999px;
+            --radius-large: 20px;
+            --radius-medium: 12px;
+            --radius-small: 8px;
+
+            /* === Transitions === */
+            --transition-smooth: all 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
+            --transition-fast: all 0.2s ease;
+
+            /* === Soft Shadow System === */
+            --shadow-xs: 0 1px 2px rgba(20, 30, 25, 0.04);
+            --shadow-sm: 0 2px 8px -2px rgba(20, 30, 25, 0.05);
+            --shadow-md: 0 12px 32px -12px rgba(20, 30, 25, 0.08);
+            --shadow-lg: 0 24px 60px -24px rgba(20, 30, 25, 0.10);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 17px;
+            font-weight: 500;
+            line-height: 1.6;
+            color: var(--color-ink);
+            background-color: var(--color-light);
+            -webkit-font-smoothing: antialiased;
+            padding-bottom: 120px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* === Premium Header === */
+        .ds-header {
+            padding: 80px 0 60px;
+            border-bottom: 1px solid var(--color-border);
+            background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 100%);
+        }
+
+        .ds-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-primary);
+            margin-bottom: 16px;
+        }
+
+        .ds-eyebrow i {
+            font-size: 1.1rem;
+        }
+
+        .ds-title {
+            font-family: var(--font-accent);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--color-ink);
+            margin-bottom: 24px;
+        }
+
+        .ds-title em {
+            font-style: italic;
+            font-weight: 400;
+            color: var(--color-primary);
+        }
+
+        .ds-lead {
+            font-size: 1.25rem;
+            color: rgba(26, 28, 27, 0.8);
+            max-width: 780px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        /* === Navigation grid === */
+        .ds-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .ds-nav-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-medium);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            color: var(--color-ink);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+        }
+
+        .ds-nav-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-primary);
+        }
+
+        .ds-nav-card .icon-wrap {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-small);
+            background: var(--color-primary-soft);
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .ds-nav-card .text-wrap h4 {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .ds-nav-card .text-wrap span {
+            font-size: 0.8rem;
+            color: var(--color-gray-soft);
+        }
+
+        /* === Section Styles === */
+        .ds-section {
+            margin-top: 100px;
+            scroll-margin-top: 40px;
+        }
+
+        .section-headline {
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: 16px;
+            margin-bottom: 48px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .section-headline h2 {
+            font-family: var(--font-accent);
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: var(--color-ink);
+        }
+
+        .section-headline h2 em {
+            font-style: italic;
+            font-weight: 400;
+            color: var(--color-accent);
+        }
+
+        .section-headline .num {
+            font-family: var(--font-accent);
+            font-size: 3rem;
+            font-weight: 300;
+            color: rgba(71, 128, 60, 0.15);
+            line-height: 0.8;
+        }
+
+        /* === 01 Colors Grid === */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .color-card {
+            background: var(--color-white);
+            border-radius: var(--radius-large);
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+        }
+
+        .color-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .color-swatch {
+            height: 160px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            padding: 16px;
+        }
+
+        .color-swatch .copy-btn {
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(8px);
+            border-radius: var(--radius-small);
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            color: var(--color-ink);
+            transition: var(--transition-fast);
+            box-shadow: var(--shadow-xs);
+        }
+
+        .color-swatch .copy-btn:hover {
+            background: var(--color-white);
+            color: var(--color-primary);
+            transform: scale(1.05);
+        }
+
+        .color-info {
+            padding: 24px;
+        }
+
+        .color-info h3 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .color-info .hex-val {
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--color-primary);
+        }
+
+        .color-info .var-name {
+            font-family: monospace;
+            font-size: 0.8rem;
+            background: #F4F7F4;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 8px 0 12px;
+            color: var(--color-ink);
+        }
+
+        .color-info p {
+            font-size: 0.9rem;
+            color: rgba(26, 28, 27, 0.75);
+            line-height: 1.5;
+        }
+
+        /* === 02 Typography Elements === */
+        .typo-table {
+            background: var(--color-white);
+            border-radius: var(--radius-large);
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .typo-row {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            border-bottom: 1px solid var(--color-border);
+            padding: 40px;
+            gap: 40px;
+        }
+
+        .typo-row:last-child {
+            border-bottom: none;
+        }
+
+        .typo-demo {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .typo-meta {
+            background: #FBFBFB;
+            border-left: 4px solid var(--color-primary);
+            padding: 20px 24px;
+            border-radius: 0 var(--radius-medium) var(--radius-medium) 0;
+        }
+
+        .typo-meta h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .typo-meta ul {
+            list-style: none;
+            display: grid;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: rgba(26, 28, 27, 0.8);
+        }
+
+        .typo-meta ul li b {
+            color: var(--color-ink);
+            font-weight: 600;
+        }
+
+        /* --- Typography Specs from Camp Website --- */
+        .section-title-demo {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+            font-weight: 800;
+            line-height: 0.98;
+            letter-spacing: -0.028em;
+            color: var(--color-ink);
+        }
+
+        .section-subtitle-demo {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--color-ink);
+            opacity: 0.8;
+            line-height: 1.55;
+            max-width: 600px;
+        }
+
+        .section-lead-demo {
+            font-size: 1.3rem;
+            font-weight: 500;
+            line-height: 1.45;
+            letter-spacing: -0.01em;
+            color: var(--color-ink);
+        }
+
+        .section-text-demo {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: rgba(26, 28, 27, 0.8);
+            line-height: 1.55;
+        }
+
+        .accent-em-demo {
+            font-family: var(--font-accent);
+            font-style: italic;
+            font-weight: 400;
+            color: var(--color-primary);
+            letter-spacing: -0.005em;
+        }
+
+        .section-tag-demo {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-primary);
+            background-color: transparent;
+            border: 1px solid var(--color-border);
+            padding: 6px 14px;
+            border-radius: var(--radius-pill);
+        }
+
+        /* === 03 Differentiated Hovers === */
+        .hover-tester-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .hover-test-card {
+            background: var(--color-white);
+            border-radius: var(--radius-large);
+            border: 1px solid var(--color-border);
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .hover-test-card .badge {
+            align-self: flex-start;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            background: rgba(71,128,60,0.08);
+            color: var(--color-primary);
+            padding: 4px 10px;
+            border-radius: var(--radius-small);
+        }
+
+        .hover-test-card h3 {
+            font-family: var(--font-accent);
+            font-size: 1.35rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .hover-test-card p {
+            font-size: 0.9rem;
+            color: var(--color-gray-soft);
+            line-height: 1.5;
+        }
+
+        .hover-test-card .indicator {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: auto;
+        }
+
+        /* -- Differentiated hover styles matching styles.css -- */
+        .hover-bento:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px -16px rgba(71, 128, 60, 0.15);
+            border-color: var(--color-primary);
+        }
+
+        .hover-bento::before {
+            content: 'Bento Card Lift';
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-size: 0.7rem;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .hover-advantage {
+            background-color: var(--color-white);
+        }
+        .hover-advantage:hover {
+            background-color: #FAFCFA;
+            border-color: var(--color-primary-hover);
+        }
+
+        .hover-price:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .hover-target:hover {
+            border-color: var(--color-primary);
+        }
+
+        .hover-target-red:hover {
+            border-color: #C99B9B;
+            background: rgba(201, 155, 155, 0.02);
+        }
+
+        .hover-image-container {
+            border-radius: var(--radius-large);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+        }
+        .hover-image-container:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* === 04 Premium Components === */
+        .comp-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        @media (max-width: 992px) {
+            .comp-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .comp-card {
+            background: var(--color-white);
+            border-radius: var(--radius-large);
+            border: 1px solid var(--color-border);
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .comp-card h3 {
+            font-family: var(--font-accent);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .comp-card .desc {
+            font-size: 0.9rem;
+            color: var(--color-gray-soft);
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .comp-demo-box {
+            background: var(--color-light);
+            border-radius: var(--radius-medium);
+            padding: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            min-height: 140px;
+        }
+
+        .comp-demo-box.dark {
+            background: var(--color-dark-bg);
+        }
+
+        /* --- Recreated Buttons --- */
+        .btn-ds {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            padding: 12px 24px;
+            font-size: 0.95rem;
+            border-radius: var(--radius-medium);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+        }
+
+        .btn-ds-pill {
+            border-radius: var(--radius-pill);
+        }
+
+        .btn-ds-primary {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .btn-ds-primary:hover {
+            background-color: var(--color-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(71, 128, 60, 0.2);
+        }
+
+        .btn-ds-secondary {
+            background-color: transparent;
+            color: var(--color-ink);
+            border: 1px solid var(--color-border);
+        }
+
+        .btn-ds-secondary:hover {
+            background-color: rgba(26, 28, 27, 0.03);
+            transform: translateY(-2px);
+        }
+
+        /* --- Recreated Bento Program Card --- */
+        .camp-program-card {
+            width: 100%;
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-large);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .camp-program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px -16px rgba(71, 128, 60, 0.12);
+        }
+
+        .camp-program-card .icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-medium);
+            background: var(--color-primary-soft);
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .camp-program-card h4 {
+            font-family: var(--font-accent);
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .camp-program-card ul {
+            list-style: none;
+            display: grid;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: rgba(26, 28, 27, 0.85);
+        }
+
+        .camp-program-card ul li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .camp-program-card ul li i {
+            color: var(--color-accent);
+            margin-top: 4px;
+        }
+
+        /* --- Recreated FAQ Item --- */
+        .camp-faq-item {
+            width: 100%;
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-medium);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .camp-faq-trigger {
+            width: 100%;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--color-ink);
+            text-align: left;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .camp-faq-trigger:hover {
+            color: var(--color-primary);
+        }
+
+        .camp-faq-trigger i {
+            color: var(--color-primary);
+            transition: var(--transition-fast);
+        }
+
+        /* === 05 Design Prohibitions === */
+        .rules-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        @media (max-width: 768px) {
+            .rules-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .rule-card {
+            background: var(--color-white);
+            border-radius: var(--radius-large);
+            border: 1px solid var(--color-border);
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .rule-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .rule-card.right h3 {
+            color: var(--color-primary);
+        }
+
+        .rule-card.wrong h3 {
+            color: #C99B9B;
+        }
+
+        .rule-list {
+            list-style: none;
+            display: grid;
+            gap: 16px;
+        }
+
+        .rule-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .rule-list li i {
+            margin-top: 4px;
+            font-size: 1.1rem;
+        }
+
+        .rule-list li b {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .right .rule-list li i {
+            color: var(--color-primary);
+        }
+
+        .wrong .rule-list li i {
+            color: #C99B9B;
+        }
+
+        /* === Copy Alert === */
+        .copy-alert {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 14px 24px;
+            border-radius: var(--radius-medium);
+            font-weight: 600;
+            box-shadow: var(--shadow-md);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition-smooth);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .copy-alert.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="ds-header">
+        <div class="container">
+            <div class="ds-eyebrow">
+                <i class="ph ph-compass-tool"></i>
+                Руководство по стилю
+            </div>
+            <h1 class="ds-title">Дизайн-Система <em>Qingdao Camp</em></h1>
+            <p class="ds-lead">
+                Официальные интерактивные стандарты визуального оформления сайта летнего языкового лагеря в Китае. 
+                Строго выверенные типографические решения, гармоничная цветовая палитра и дифференцированная система откликов интерфейса.
+            </p>
+
+            <nav class="ds-nav" aria-label="Разделы дизайн-системы">
+                <a href="#colors" class="ds-nav-card">
+                    <div class="icon-wrap"><i class="ph ph-palette"></i></div>
+                    <div class="text-wrap">
+                        <h4>01. Цветовая палитра</h4>
+                        <span>6 фирменных тонов</span>
+                    </div>
+                </a>
+                <a href="#typography" class="ds-nav-card">
+                    <div class="icon-wrap"><i class="ph ph-text-aa"></i></div>
+                    <div class="text-wrap">
+                        <h4>02. Типографика</h4>
+                        <span>Шрифты, размеры и теги</span>
+                    </div>
+                </a>
+                <a href="#hovers" class="ds-nav-card">
+                    <div class="icon-wrap"><i class="ph ph-mouse-pointer-click"></i></div>
+                    <div class="text-wrap">
+                        <h4>03. Микро-отклики</h4>
+                        <span>Интерактивные ховеры</span>
+                    </div>
+                </a>
+                <a href="#components" class="ds-nav-card">
+                    <div class="icon-wrap"><i class="ph ph-cpu"></i></div>
+                    <div class="text-wrap">
+                        <h4>04. Компоненты UI</h4>
+                        <span>Кнопки, карточки, FAQ</span>
+                    </div>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- === 01 COLOR PALETTE === -->
+        <section class="ds-section" id="colors">
+            <div class="section-headline">
+                <h2>Фирменные <em>цвета бренда</em></h2>
+                <span class="num">01</span>
+            </div>
+
+            <div class="color-grid">
+                <!-- Color 1: Primary Matcha -->
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #47803c;">
+                        <button class="copy-btn" onclick="copyColor('#47803c', 'Matcha Green')" title="Скопировать HEX">
+                            <i class="ph ph-copy"></i>
+                        </button>
+                    </div>
+                    <div class="color-info">
+                        <h3>Matcha Green <span class="hex-val">#47803c</span></h3>
+                        <span class="var-name">--color-primary</span>
+                        <p>Насыщенный оттенок чая маття. Используется строго для ключевых акцентов: главных кнопок, интерактивных плашек, границ фокуса и разделителей секций.</p>
+                    </div>
+                </div>
+
+                <!-- Color 2: Pale Matcha -->
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #E8EFE9;">
+                        <button class="copy-btn" onclick="copyColor('#E8EFE9', 'Pale Matcha')" title="Скопировать HEX">
+                            <i class="ph ph-copy"></i>
+                        </button>
+                    </div>
+                    <div class="color-info">
+                        <h3>Pale Matcha <span class="hex-val">#E8EFE9</span></h3>
+                        <span class="var-name">--color-secondary</span>
+                        <p>Легкий успокаивающий тон. Прекрасно подходит в качестве фонового выделения вспомогательных блоков, карточек бэнто и второстепенных инфо-баней.</p>
+                    </div>
+                </div>
+
+                <!-- Color 3: Warm Gold -->
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #D4AF37;">
+                        <button class="copy-btn" onclick="copyColor('#D4AF37', 'Warm Gold')" title="Скопировать HEX">
+                            <i class="ph ph-copy"></i>
+                        </button>
+                    </div>
+                    <div class="color-info">
+                        <h3>Warm Gold <span class="hex-val">#D4AF37</span></h3>
+                        <span class="var-name">--color-accent</span>
+                        <p>Золотой песок Желтого моря. Наш главный маркер изысканной верстки. Используется для курсивных акцентов в заголовках, надстрочных тегов (eyebrow) и иконок.</p>
+                    </div>
+                </div>
+
+                <!-- Color 4: Ink Near-black -->
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #1A1C1B;">
+                        <button class="copy-btn" onclick="copyColor('#1A1C1B', 'Ink Dark')" title="Скопировать HEX" style="background: rgba(255,255,255,0.95);">
+                            <i class="ph ph-copy"></i>
+                        </button>
+                    </div>
+                    <div class="color-info">
+                        <h3>Ink Near-Black <span class="hex-val">#1A1C1B</span></h3>
+                        <span class="var-name">--color-ink</span>
+                        <p>Глубокая каллиграфическая тушь. Основной цвет для наборного текста, контрастных заголовков, новейших темных экранов и сносок подвала.</p>
+                    </div>
+                </div>
+
+                <!-- Color 5: Teahouse Warm Paper -->
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #F4F2EC; border-bottom: 1px solid var(--color-border);">
+                        <button class="copy-btn" onclick="copyColor('#F4F2EC', 'Teahouse Paper')" title="Скопировать HEX">
+                            <i class="ph ph-copy"></i>
+                        </button>
+                    </div>
+                    <div class="color-info">
+                        <h3>Teahouse Paper <span class="hex-val">#F4F2EC</span></h3>
+                        <span class="var-name">--color-light</span>
+                        <p>Теплый оттенок традиционной рисовой бумаги. Служит деликатным чередующимся фоном для снижения визуального утомления при чтении.</p>
+                    </div>
+                </div>
+
+                <!-- Color 6: Pure White -->
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #FFFFFF; border-bottom: 1px solid var(--color-border);">
+                        <button class="copy-btn" onclick="copyColor('#FFFFFF', 'Pure White')" title="Скопировать HEX">
+                            <i class="ph ph-copy"></i>
+                        </button>
+                    </div>
+                    <div class="color-info">
+                        <h3>Pure White <span class="hex-val">#FFFFFF</span></h3>
+                        <span class="var-name">--color-white</span>
+                        <p>Базовый белый цвет. Применяется для основного контента карточек, подложек блоков, текстовых полей форм ввода и контрастных текстов на темных фонах.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === 02 TYPOGRAPHY === -->
+        <section class="ds-section" id="typography">
+            <div class="section-headline">
+                <h2>Типографические <em>константы</em></h2>
+                <span class="num">02</span>
+            </div>
+
+            <div class="typo-table">
+                <!-- Section Title -->
+                <div class="typo-row">
+                    <div class="typo-demo">
+                        <span class="section-tag-demo" style="margin-bottom: 16px;">Пример тега</span>
+                        <h2 class="section-title-demo">Летний языковой лагерь в <span class="accent-em-demo">Циндао</span></h2>
+                    </div>
+                    <div class="typo-meta">
+                        <h4><i class="ph ph-text-h-two"></i> Заголовки Секций</h4>
+                        <ul>
+                            <li><b>Класс:</b> <code>.section-title</code></li>
+                            <li><b>Шрифт:</b> <code>var(--font-heading)</code> (Plus Jakarta Sans)</li>
+                            <li><b>Размер:</b> адаптивный <code>clamp(2rem, 3.6vw, 2.875rem)</code></li>
+                            <li><b>Начертание:</b> Extra Bold (800)</li>
+                            <li><b>Выравнивание ритма:</b> <code>line-height: 0.95</code>, <code>letter-spacing: -0.028em</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section Subtitle -->
+                <div class="typo-row">
+                    <div class="typo-demo">
+                        <p class="section-subtitle-demo">Мы продумали каждый день лагеря так, чтобы совместить учебу с незабываемым опытом и живыми приключениями на берегу моря.</p>
+                    </div>
+                    <div class="typo-meta">
+                        <h4><i class="ph ph-text-t"></i> Подзаголовки Секций</h4>
+                        <ul>
+                            <li><b>Класс:</b> <code>.section-subtitle</code></li>
+                            <li><b>Шрифт:</b> <code>var(--font-body)</code> (Manrope)</li>
+                            <li><b>Размер:</b> <code>1.2rem</code></li>
+                            <li><b>Начертание:</b> Medium (500)</li>
+                            <li><b>Межстрочный интервал:</b> <code>line-height: 1.6</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section Lead -->
+                <div class="typo-row">
+                    <div class="typo-demo">
+                        <p class="section-lead-demo">Наш летний лагерь создан для тех, кто хочет преодолеть языковой барьер и почувствовать настоящий Китай.</p>
+                    </div>
+                    <div class="typo-meta">
+                        <h4><i class="ph ph-text-aa"></i> Вводный Текст (Lead)</h4>
+                        <ul>
+                            <li><b>Класс:</b> <code>.section-lead</code></li>
+                            <li><b>Шрифт:</b> <code>var(--font-body)</code> (Manrope)</li>
+                            <li><b>Размер:</b> <code>1.35rem</code></li>
+                            <li><b>Начертание:</b> Medium (500)</li>
+                            <li><b>Свойства:</b> <code>line-height: 1.5</code>, <code>letter-spacing: -0.01em</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section Text -->
+                <div class="typo-row">
+                    <div class="typo-demo">
+                        <p class="section-text-demo">Участники ежедневно используют китайский язык в реальных жизненных ситуациях: во время интерактивных квестов, городских экскурсий, поездок к морю и живого общения с носителями языка.</p>
+                    </div>
+                    <div class="typo-meta">
+                        <h4><i class="ph ph-paragraph"></i> Основной Текст</h4>
+                        <ul>
+                            <li><b>Класс:</b> <code>.section-text</code></li>
+                            <li><b>Шрифт:</b> <code>var(--font-body)</code> (Manrope)</li>
+                            <li><b>Размер:</b> <code>1.5rem</code> (адаптируется до 1.25rem на мобильных)</li>
+                            <li><b>Начертание:</b> Medium (500)</li>
+                            <li><b>Свойства:</b> <code>line-height: 1.55</code>, <code>letter-spacing: -0.005em</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Accent Em (Italic Accent) -->
+                <div class="typo-row">
+                    <div class="typo-demo">
+                        <span style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800;">
+                            Полное погружение в <span class="accent-em-demo">живую культуру</span>
+                        </span>
+                    </div>
+                    <div class="typo-meta">
+                        <h4><i class="ph ph-text-italic"></i> Эстетический Акцент</h4>
+                        <ul>
+                            <li><b>Класс:</b> <code>.accent-em</code></li>
+                            <li><b>Шрифт:</b> <code>var(--font-accent)</code> (Fraunces Serif)</li>
+                            <li><b>Стиль:</b> Italic (Курсивный)</li>
+                            <li><b>Начертание:</b> Regular (400)</li>
+                            <li><b>Использование:</b> строго 1-2 слова внутри крупных заголовков</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === 03 DIFFERENTIATED HOVERS === -->
+        <section class="ds-section" id="hovers">
+            <div class="section-headline">
+                <h2>Система <em>дифференцированных ховеров</em></h2>
+                <span class="num">03</span>
+            </div>
+
+            <p style="font-size: 1.1rem; color: rgba(26,28,27,0.8); max-width: 800px; margin-bottom: 40px;">
+                Вместо однотипного поведения элементов, каждая группа интерфейса имеет свой уникальный физический отклик на наведение курсора. Проверьте их интерактивно ниже:
+            </p>
+
+            <div class="hover-tester-grid">
+                <!-- Hover 1: Bento Card Lift -->
+                <div class="hover-test-card hover-bento">
+                    <span class="badge">Bento-карты</span>
+                    <h3>Программа бэнто-карты</h3>
+                    <p>Физически приподнимается на 8px вверх. Сопровождается глубокой диффузной тенью с легким зеленым оттенком маття.</p>
+                    <span class="indicator">Наведите для теста <i class="ph ph-arrow-up-right"></i></span>
+                </div>
+
+                <!-- Hover 2: Bento Advantage highlight -->
+                <div class="hover-test-card hover-advantage">
+                    <span class="badge">Преимущества</span>
+                    <h3>Фоновое свечение</h3>
+                    <p>Абсолютно статична (без сдвига по вертикали). При наведении слегка подсвечивает свой фон и делает контур более выразительным.</p>
+                    <span class="indicator">Наведите для теста <i class="ph ph-magic-wand"></i></span>
+                </div>
+
+                <!-- Hover 3: Price Box Lift -->
+                <div class="hover-test-card hover-price">
+                    <span class="badge">Цены / Тарифы</span>
+                    <h3>Деликатный лифт</h3>
+                    <p>Приподнимается всего на 3px. Тень становится мягче и глубже. Не отвлекает от главного — восприятия стоимости.</p>
+                    <span class="indicator">Наведите для теста <i class="ph ph-arrows-in-line-vertical"></i></span>
+                </div>
+
+                <!-- Hover 4: Target Box Border -->
+                <div class="hover-test-card hover-target">
+                    <span class="badge">Кому подходит</span>
+                    <h3>Контурный акцент</h3>
+                    <p>Элемент статичен. Граница мягко переходит в насыщенный зеленый Matcha Green. Никаких лишних теней.</p>
+                    <span class="indicator">Наведите для теста <i class="ph ph-frame-corners"></i></span>
+                </div>
+
+                <!-- Hover 5: Negative Target Box -->
+                <div class="hover-test-card hover-target-red">
+                    <span class="badge" style="background: rgba(201,155,155,0.1); color: #C99B9B;">Кому НЕ подходит</span>
+                    <h3>Негативный отклик</h3>
+                    <p>При наведении рамка окрашивается в деликатный приглушенный розово-красный цвет без резкой агрессии.</p>
+                    <span class="indicator" style="color: #C99B9B;">Наведите для теста <i class="ph ph-x-circle"></i></span>
+                </div>
+
+                <!-- Hover 6: Differentiated Image shadow -->
+                <div class="hover-image-container">
+                    <div class="hover-test-card" style="border: none; height: 100%;">
+                        <span class="badge" style="background: rgba(212,175,55,0.08); color: var(--color-accent);">Фото-карточки</span>
+                        <h3>Мягкая тень</h3>
+                        <p>Изображения и портреты не масштабируются при ховере, но обретают глубокую, рассеянную премиум-тень.</p>
+                        <span class="indicator" style="color: var(--color-accent);">Наведите для теста <i class="ph ph-intersect"></i></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === 04 PREMIUM COMPONENTS === -->
+        <section class="ds-section" id="components">
+            <div class="section-headline">
+                <h2>Библиотека <em>интерфейсных компонентов</em></h2>
+                <span class="num">04</span>
+            </div>
+
+            <div class="comp-grid">
+                <!-- Component 1: Buttons -->
+                <div class="comp-card">
+                    <h3>Кнопки премиум-класса</h3>
+                    <div class="desc">
+                        Скругление углов составляет 12px (<code>--radius-medium</code>) или 999px для круглых кнопок. 
+                        Текст пишется естественным регистром без принудительного CAPS.
+                    </div>
+                    <div class="comp-demo-box">
+                        <button class="btn-ds btn-ds-primary btn-ds-pill">Оставить заявку</button>
+                        <button class="btn-ds btn-ds-secondary btn-ds-pill">Узнать больше</button>
+                        <button class="btn-ds btn-ds-primary">Академический блок</button>
+                    </div>
+                </div>
+
+                <!-- Component 2: Bento Program Card -->
+                <div class="comp-card">
+                    <h3>Карточка Бэнто-Программы</h3>
+                    <div class="desc">
+                        Единая плитка для детализации программы. Содержит тематическую иконку, заголовок и контентный список с золотистыми галочками.
+                    </div>
+                    <div class="comp-demo-box" style="padding: 16px;">
+                        <div class="camp-program-card">
+                            <div class="icon-box"><i class="ph ph-chats-teardrop"></i></div>
+                            <h4>Разговорная практика</h4>
+                            <ul>
+                                <li><i class="ph ph-check"></i>Разговорные клубы с носителями ежедневно</li>
+                                <li><i class="ph ph-check"></i>Реальные языковые квесты в мегаполисе</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Component 3: FAQ Accordion -->
+                <div class="comp-card">
+                    <h3>Интерактивный FAQ-аккордеон</h3>
+                    <div class="desc">
+                        Чистые линии, мягкая тень карточки. Стрелка-маркер деликатно указывает на раскрытое состояние элемента.
+                    </div>
+                    <div class="comp-demo-box" style="padding: 16px;">
+                        <div class="camp-faq-item">
+                            <button class="camp-faq-trigger">
+                                <span>Нужен ли определенный уровень языка?</span>
+                                <i class="ph ph-caret-down"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Component 4: Forms and Input Fields -->
+                <div class="comp-card">
+                    <h3>Чистый дизайн форм ввода</h3>
+                    <div class="desc">
+                        Поля ввода имеют мягкие скругления 12px. Фокус-состояние плавно подсвечивает рамку фирменным цветом Matcha Green.
+                    </div>
+                    <div class="comp-demo-box">
+                        <div style="width: 100%; display: flex; flex-direction: column; gap: 8px;">
+                            <label style="font-size: 0.85rem; font-weight: 700; color: var(--color-ink);">Ваше имя</label>
+                            <input type="text" placeholder="Иван Иванов" style="width:100%; padding: 14px 20px; border-radius: var(--radius-medium); border: 1px solid var(--color-border); font-family:inherit; outline:none; transition:var(--transition-fast);" onfocus="this.style.borderColor='var(--color-primary)';" onblur="this.style.borderColor='var(--color-border)';">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === 05 DESIGN RULES === -->
+        <section class="ds-section" id="rules">
+            <div class="section-headline">
+                <h2>Кодекс <em>визуального дизайна</em></h2>
+                <span class="num">05</span>
+            </div>
+
+            <div class="rules-container">
+                <!-- DO -->
+                <div class="rule-card right">
+                    <h3><i class="ph ph-check-circle"></i> Как правильно (DO)</h3>
+                    <ul class="rule-list">
+                        <li>
+                            <i class="ph ph-check"></i>
+                            <div>
+                                <b>Естественный регистр букв</b>
+                                <span>Все кнопки, надстрочные теги, пункты меню пишутся стандартными строчными буквами как в обычных предложениях. Это сохраняет благородный стиль.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="ph ph-check"></i>
+                            <div>
+                                <b>Использование золотого курсива</b>
+                                <span>Выделяйте золотым курсивом (<code>.accent-em</code>) строго 1-2 смысловых слова внутри крупных заголовков секций для акцента.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="ph ph-check"></i>
+                            <div>
+                                <b>Интервалы и иерархия размеров</b>
+                                <span>Соблюдайте четкую иерархию шрифтов: заголовки — крупные и плотные, основной текст — читаемый 1.5rem (или 1.0625rem), ярлыки — строго от 14px.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- DONT -->
+                <div class="rule-card wrong">
+                    <h3><i class="ph ph-x-circle"></i> Как запрещено (DON'T)</h3>
+                    <ul class="rule-list">
+                        <li>
+                            <i class="ph ph-x"></i>
+                            <div>
+                                <b>Заглавные буквы (CAPS LOCK)</b>
+                                <span>Категорически запрещено писать тексты, eyebrows или кнопки заглавными буквами с сильной разрядкой. Это выглядит агрессивно и дешево.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="ph ph-x"></i>
+                            <div>
+                                <b>Шрифты меньше 14 пикселей</b>
+                                <span>Шрифты размером 10-12px запрещены на всем сайте. Мелкий текст создает визуальный шум и нечитаем на мобильных экранах.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="ph ph-x"></i>
+                            <div>
+                                <b>Хаотичные резкие тени</b>
+                                <span>Запрещено вешать глубокие, контрастные черные тени. Пользуйтесь только мягким, деликатным спектром диффузных теней.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Success Alert Modal -->
+    <div class="copy-alert" id="copy-alert">
+        <i class="ph ph-check-square"></i>
+        <span>Цвет скопирован в буфер обмена!</span>
+    </div>
+
+    <script>
+        function copyColor(hex, name) {
+            navigator.clipboard.writeText(hex).then(() => {
+                const alert = document.getElementById('copy-alert');
+                alert.querySelector('span').innerText = `Цвет ${name} (${hex}) скопирован!`;
+                alert.classList.add('show');
+                setTimeout(() => {
+                    alert.classList.remove('show');
+                }, 2500);
+            }).catch(err => {
+                console.error('Ошибка при копировании: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

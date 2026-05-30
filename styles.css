@@ -385,18 +385,27 @@ ul, ol {
 .hover-zoom-effect {
     overflow: hidden;
     position: relative;
+    border-radius: inherit;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: center center;
 }
 
 .hover-zoom-effect img,
 .hover-zoom-effect video {
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    transition: var(--transition-smooth);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: var(--transition-photo);
     will-change: transform;
+    transform-origin: center center;
+    border-radius: inherit;
+}
+
+.hover-zoom-effect:hover {
+    transform: scale(1.03);
 }
 
 .hover-zoom-effect:hover img,
 .hover-zoom-effect:hover video {
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 /* ==========================================================================
@@ -1615,8 +1624,21 @@ ul, ol {
     display: flex;
     flex-direction: column;
     gap: 14px;
-    overflow-y: auto;
+    overflow: hidden;
     padding-right: 4px;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: max-height 0.45s ease, opacity 0.35s ease, transform 0.45s ease;
+    pointer-events: none;
+}
+
+.tennis-day-card:hover .day-card-timeline,
+.tennis-day-card.active-overlay .day-card-timeline {
+    max-height: 1000px;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .day-card-timeline::-webkit-scrollbar {
@@ -2414,6 +2436,7 @@ ul, ol {
 .footer-logo {
     font-size: 1.8rem;
     margin-bottom: 6px;
+    color: var(--color-primary);
 }
 
 .footer-copy {
@@ -3173,7 +3196,9 @@ img {
 .about-carousel {
     width: 100%;
     margin-top: 70px;
-    overflow: hidden;
+    padding: 28px 0;
+    overflow-x: hidden;
+    overflow-y: visible;
     -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
             mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
 }
@@ -3192,18 +3217,17 @@ img {
     width: 380px;
     height: 480px;
     border-radius: var(--radius-large);
-    /* overflow: hidden убран — иначе при scale обрезались бы края */
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                box-shadow 0.45s ease;
+    overflow: hidden;
+    box-shadow: none;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     cursor: pointer;
     position: relative;
     z-index: 0;
 }
 
 .carousel-item:hover {
-    transform: scale(1.07) translateY(-6px);
-    box-shadow: 0 28px 56px -16px rgba(20, 30, 25, 0.22);
+    transform: scale(1.03) translateY(-6px);
+    box-shadow: none;
     z-index: 2;
 }
 
@@ -3215,6 +3239,14 @@ img {
     border-radius: var(--radius-large);
     pointer-events: none;
     user-select: none;
+}
+
+.about-carousel img,
+.carousel-item img,
+.photo-grid-item img,
+.qingdao-hero-photo img,
+.hover-zoom-effect img {
+    cursor: pointer;
 }
 
 @keyframes carousel-scroll {

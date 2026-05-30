@@ -357,6 +357,15 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        // Клик на остальные крупные фото на странице
+        document.querySelectorAll('.carousel-item img, .about-carousel img, .photo-grid-item img, .qingdao-hero-photo img, .hover-zoom-effect img').forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openLightbox(img.src, img.alt);
+            });
+        });
+
         // Закрытие — кнопка крестика
         lightboxClose.addEventListener('click', closeLightbox);
 
